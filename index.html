@@ -1122,56 +1122,223 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== MOBILE NAV ===== */
+    /* =========================================
+       RESPONSIVE — TABLET  (≤ 1024px)
+    ========================================= */
+    @media (max-width: 1024px) {
+      .why-inner { gap: 40px; }
+      .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+      .hero-stats { padding: 0 5%; }
+      .stat-card { padding: 22px 16px; }
+      .stat-card h3 { font-size: 1.6rem; }
+    }
+
+    /* =========================================
+       RESPONSIVE — TABLET  (≤ 900px)
+    ========================================= */
     @media (max-width: 900px) {
+
+      /* --- Navbar --- */
       .hamburger { display: flex; }
       .nav-links {
         position: fixed;
         top: 0; right: -100%;
-        width: 75%; max-width: 320px;
+        width: 78%; max-width: 300px;
         height: 100vh;
         background: var(--white);
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        padding: 0 40px;
-        gap: 28px;
-        box-shadow: -8px 0 32px rgba(0,0,0,.1);
+        padding: 80px 36px 40px;
+        gap: 24px;
+        box-shadow: -8px 0 40px rgba(0,0,0,.14);
         transition: right .4s ease;
         z-index: 999;
+        overflow-y: auto;
       }
       .nav-links.open { right: 0; }
-      .nav-links a { font-size: 1rem; }
-      .nav-btn { width: 100%; text-align: center; justify-content: center; }
+      .nav-links a { font-size: 1rem; width: 100%; }
+      .nav-btn { width: 100%; text-align: center; justify-content: center; display: flex; }
 
-      .hero-stats {
-        flex-direction: column;
-        padding: 0;
+      /* Nav overlay when menu open */
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.4);
+        z-index: 998;
       }
+      .nav-overlay.show { display: block; }
 
-      .form-grid { grid-template-columns: 1fr; }
-      .form-card { padding: 28px 20px; }
+      /* --- Hero --- */
+      .hero { flex-direction: column; align-items: flex-start; min-height: 100svh; }
+      .hero-content { padding: 110px 5% 40px; max-width: 100%; }
+      .hero-stats {
+        flex-wrap: wrap;
+        padding: 0;
+        width: 100%;
+      }
+      .stat-card { flex: 1 1 50%; padding: 20px 12px; }
+      .hero-scroll { display: none; }
 
+      /* --- Facilities --- */
+      .facilities-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+      /* --- Courses --- */
+      .courses-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .course-card { height: 300px; }
+
+      /* --- Form --- */
+      .form-grid { grid-template-columns: 1fr; gap: 16px; }
+      .form-card { padding: 32px 24px; }
+      .form-group.full { grid-column: 1; }
+
+      /* --- Gallery --- */
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
+        gap: 12px;
       }
-      .gallery-item { grid-column: unset !important; grid-row: unset !important; height: 200px; }
+      .gallery-item {
+        grid-column: unset !important;
+        grid-row: unset !important;
+        height: 200px;
+      }
 
-      .why-inner { grid-template-columns: 1fr; gap: 40px; }
-      .why-img { height: 320px; }
+      /* --- Why --- */
+      .why-inner { grid-template-columns: 1fr; gap: 36px; }
+      .why-img { height: 300px; order: -1; }
+      .why-badge { bottom: 16px; left: 16px; padding: 14px 16px; }
 
-      .contact-inner { grid-template-columns: 1fr; }
+      /* --- Contact --- */
+      .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+      .map-container { min-height: 300px; }
+      .map-container iframe { min-height: 300px; }
 
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      /* --- Footer --- */
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: 1 / -1; }
     }
 
-    @media (max-width: 600px) {
-      .gallery-grid { grid-template-columns: 1fr; }
+    /* =========================================
+       RESPONSIVE — MOBILE  (≤ 640px)
+    ========================================= */
+    @media (max-width: 640px) {
+
+      /* --- Global spacing --- */
+      .facilities, .courses, .admission, .gallery,
+      .why, .contact, .faq { padding: 72px 0; }
+      .section-title { margin-bottom: 36px; }
+      .section-title p { font-size: .88rem; }
+
+      /* --- Navbar --- */
+      .navbar { padding: 0 4%; height: 64px; }
+      .logo-icon { width: 38px; height: 38px; font-size: 1.1rem; border-radius: 10px; }
+      .logo-text h1 { font-size: .78rem; }
+      .logo-text span { font-size: .58rem; }
+
+      /* --- Hero --- */
+      .hero-content { padding: 90px 4% 32px; }
+      .admission-badge { font-size: .7rem; padding: 6px 14px; margin-bottom: 20px; }
+      .hero-title { margin-bottom: 10px; }
+      .hero-tagline { font-size: .9rem; margin-bottom: 28px; }
+      .hero-actions { flex-direction: column; gap: 12px; }
+      .btn-primary, .btn-whatsapp {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 24px;
+        font-size: .92rem;
+      }
+
+      /* Stats — 2 col */
+      .stat-card { flex: 1 1 50%; padding: 18px 10px; }
+      .stat-card h3 { font-size: 1.5rem; }
+      .stat-card p { font-size: .7rem; }
+
+      /* --- Facilities --- */
+      .facilities-grid { grid-template-columns: 1fr; gap: 20px; }
+      .facility-img { height: 200px; }
+
+      /* --- Courses --- */
+      .courses-grid { grid-template-columns: 1fr; gap: 18px; }
+      .course-card { height: 280px; }
+      .course-link { opacity: 1; transform: none; }
+
+      /* --- Admission form --- */
+      .form-card { padding: 24px 16px; border-radius: 18px; }
+      .form-group input,
+      .form-group select,
+      .form-group textarea { font-size: .88rem; padding: 13px 14px; }
+      .btn-submit { width: 100%; justify-content: center; padding: 16px 24px; font-size: .95rem; }
+
+      /* --- FAQ --- */
+      .faq-q { font-size: .88rem; padding: 18px 16px; }
+      .faq-a p { font-size: .84rem; padding: 0 16px 18px; }
+
+      /* --- Gallery --- */
+      .gallery-grid { grid-template-columns: 1fr; gap: 12px; }
       .gallery-item { height: 220px; }
-      .courses-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; }
-      .btn-primary, .btn-whatsapp { width: 100%; justify-content: center; }
+
+      /* --- Why --- */
+      .why-img { height: 260px; border-radius: 18px; }
+      .why-badge { padding: 12px 14px; gap: 10px; }
+      .why-badge-icon { width: 38px; height: 38px; font-size: 1rem; border-radius: 10px; }
+      .why-badge-text h4 { font-size: .82rem; }
+      .why-badge-text p  { font-size: .7rem; }
+      .why-item { padding: 16px; }
+      .why-item-icon { width: 36px; height: 36px; font-size: .9rem; border-radius: 8px; }
+      .why-item-text h4 { font-size: .88rem; }
+      .why-item-text p  { font-size: .78rem; }
+      .why-content > p { font-size: .9rem; margin-bottom: 24px; }
+
+      /* --- Contact --- */
+      .contact-card { padding: 18px 16px; gap: 14px; }
+      .contact-card-icon { width: 44px; height: 44px; font-size: 1rem; border-radius: 12px; }
+      .contact-card h4 { font-size: .85rem; }
+      .contact-card p, .contact-card a { font-size: .82rem; }
+      .btn-wa-contact { padding: 12px 22px; font-size: .86rem; }
+      .map-container { min-height: 260px; border-radius: 14px; }
+      .map-container iframe { min-height: 260px; }
+
+      /* --- Footer --- */
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      footer { padding: 48px 0 0; }
+      .footer-brand { grid-column: unset; }
+      .footer-brand p { font-size: .84rem; }
+      .footer-col h4 { font-size: .82rem; margin-bottom: 14px; }
+      .footer-col ul li a { font-size: .82rem; }
+      .footer-bottom { font-size: .75rem; padding: 20px 0; }
+
+      /* --- WhatsApp float --- */
+      .wa-float { bottom: 20px; right: 16px; }
+      .wa-btn { width: 52px; height: 52px; font-size: 1.4rem; }
+      .wa-tooltip { display: none; }
+
+      /* --- Toast --- */
+      .toast {
+        width: 90%;
+        text-align: center;
+        font-size: .82rem;
+        padding: 14px 20px;
+        border-radius: 14px;
+        justify-content: center;
+      }
+    }
+
+    /* =========================================
+       RESPONSIVE — SMALL MOBILE  (≤ 400px)
+    ========================================= */
+    @media (max-width: 400px) {
+      .hero-title { font-size: 1.9rem; }
+      .stat-card h3 { font-size: 1.3rem; }
+      .stat-card p  { font-size: .65rem; letter-spacing: .5px; }
+      .admission-badge { font-size: .65rem; letter-spacing: 1px; }
+      .form-card { padding: 20px 12px; }
+      .logo-text h1 { font-size: .72rem; }
+      .course-card { height: 260px; }
+      .facility-img { height: 180px; }
+      .why-img { height: 220px; }
+      .contact-card { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -1201,6 +1368,7 @@
     <span></span><span></span><span></span>
   </div>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="home">
@@ -1790,17 +1958,29 @@
   });
 
   /* ----- Hamburger menu ----- */
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  const hamburger  = document.getElementById('hamburger');
+  const navLinks   = document.getElementById('navLinks');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function openMenu() {
+    hamburger.classList.add('open');
+    navLinks.classList.add('open');
+    navOverlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    navOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+    navLinks.classList.contains('open') ? closeMenu() : openMenu();
   });
+  navOverlay.addEventListener('click', closeMenu);
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   /* ----- Scroll reveal ----- */
